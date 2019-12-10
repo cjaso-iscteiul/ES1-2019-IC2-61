@@ -1,17 +1,28 @@
 package projeto;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import javax.swing.Box;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
 import java.awt.FlowLayout;
 import javax.swing.JSplitPane;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 
 public class IG extends JFrame {
 
@@ -21,6 +32,8 @@ public class IG extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTable table;
+	private readExcelFile excel;
+	XSSFWorkbook wot;
 
 	/**
 	 * Launch the application.
@@ -49,7 +62,37 @@ public class IG extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		DefaultTableModel info = new DefaultTableModel();
 		JButton btnProcurar = new JButton("Procurar");
+		btnProcurar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(e.getSource()== btnProcurar) {
+					readExcelFile r = new readExcelFile();
+					r.showExcel();
+					ArrayList<String> lista = r.getLista();
+					System.out.println(lista.size());
+					
+					boolean firstLine = false;
+					
+					for(int j=0; j<lista.size()-12; j+=12) {
+						String[] listaAux = new String[11];
+						
+						for(int i=j; i<j+11; i++) {
+							listaAux[i-j] = lista.get(i);
+						}
+						if(!firstLine) {
+							for(String s : listaAux) {
+								info.addColumn(s);
+							}
+							firstLine = true;
+						}
+						else {
+							info.addRow(listaAux);
+						}
+					}
+				}
+			}
+		});
 		btnProcurar.setBounds(6, 6, 220, 29);
 		contentPane.add(btnProcurar);
 		
@@ -89,8 +132,12 @@ public class IG extends JFrame {
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(16, 51, 228, 188);
+		contentPane.add(scrollPane);
+		
 		table = new JTable();
-		table.setBounds(16, 47, 210, 214);
-		contentPane.add(table);
+		scrollPane.setViewportView(table);
+		table.setModel(info);
 	}
 }
