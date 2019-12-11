@@ -17,12 +17,17 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/com/github/virtuald/curvesapi/1.06/curvesapi-1.06-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/com/github/virtuald/curvesapi/1.06/curvesapi-1.06-sources.jar.sha1"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi/4.1.1/_remote.repositories"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi/4.1.1/m2e-lastUpdated.properties"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi/4.1.1/poi-4.1.1-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi/4.1.1/poi-4.1.1-sources.jar.sha1"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi/4.1.1/poi-4.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi/4.1.1/poi-4.1.1.jar.sha1"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi/4.1.1/poi-4.1.1.pom"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi/4.1.1/poi-4.1.1.pom.sha1"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/commons-codec/commons-codec/1.13/_remote.repositories"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/commons-codec/commons-codec/1.13/commons-codec-1.13-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/commons-codec/commons-codec/1.13/commons-codec-1.13-sources.jar.sha1"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/commons-codec/commons-codec/1.13/_remote.repositories"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/commons-codec/commons-codec/1.13/commons-codec-1.13.jar"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/commons-codec/commons-codec/1.13/commons-codec-1.13.jar.sha1"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/commons-codec/commons-codec/1.13/commons-codec-1.13.pom"/>
@@ -36,28 +41,6 @@
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.pom"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-math3/3.6.1/commons-math3-3.6.1.pom.sha1"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-math3/3.6.1/m2e-lastUpdated.properties"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-collections4/4.4/_remote.repositories"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4-sources.jar.sha1"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.jar.sha1"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.pom"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-collections4/4.4/commons-collections4-4.4.pom.sha1"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-collections4/4.4/m2e-lastUpdated.properties"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/_remote.repositories"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19-sources.jar.sha1"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19.jar"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19.jar.sha1"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19.pom"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19.pom.sha1"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/m2e-lastUpdated.properties"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-parent/48/_remote.repositories"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-parent/48/commons-parent-48.pom.sha1"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-parent/39/_remote.repositories"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-parent/39/commons-parent-39.pom"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-parent/39/commons-parent-39.pom.sha1"/>
-	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-parent/48/commons-parent-48.pom"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml/4.1.1/_remote.repositories"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml/4.1.1/m2e-lastUpdated.properties"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml/4.1.1/poi-ooxml-4.1.1-sources.jar"/>
@@ -66,6 +49,14 @@
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml/4.1.1/poi-ooxml-4.1.1.jar.sha1"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml/4.1.1/poi-ooxml-4.1.1.pom"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml/4.1.1/poi-ooxml-4.1.1.pom.sha1"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml-schemas/4.1.1/_remote.repositories"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml-schemas/4.1.1/m2e-lastUpdated.properties"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml-schemas/4.1.1/poi-ooxml-schemas-4.1.1-javadoc.jar.lastUpdated"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml-schemas/4.1.1/poi-ooxml-schemas-4.1.1-sources.jar.lastUpdated"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml-schemas/4.1.1/poi-ooxml-schemas-4.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml-schemas/4.1.1/poi-ooxml-schemas-4.1.1.jar.sha1"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml-schemas/4.1.1/poi-ooxml-schemas-4.1.1.pom"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/poi/poi-ooxml-schemas/4.1.1/poi-ooxml-schemas-4.1.1.pom.sha1"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/xmlbeans/xmlbeans/3.1.0/_remote.repositories"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/xmlbeans/xmlbeans/3.1.0/m2e-lastUpdated.properties"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/xmlbeans/xmlbeans/3.1.0/xmlbeans-3.1.0-sources.jar"/>
@@ -75,10 +66,20 @@
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/xmlbeans/xmlbeans/3.1.0/xmlbeans-3.1.0.pom"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/xmlbeans/xmlbeans/3.1.0/xmlbeans-3.1.0.pom.sha1"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/com/github/virtuald/curvesapi/1.06/_remote.repositories"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/com/github/virtuald/curvesapi/1.06/curvesapi-1.06-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/com/github/virtuald/curvesapi/1.06/curvesapi-1.06-sources.jar.sha1"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.jar.sha1"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.pom"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/com/github/virtuald/curvesapi/1.06/curvesapi-1.06.pom.sha1"/>
 	<classpathentry exported="true" kind="lib" path="MavenDepend/com/github/virtuald/curvesapi/1.06/m2e-lastUpdated.properties"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/_remote.repositories"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19-sources.jar.sha1"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19.jar"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19.jar.sha1"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19.pom"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/commons-compress-1.19.pom.sha1"/>
+	<classpathentry exported="true" kind="lib" path="MavenDepend/org/apache/commons/commons-compress/1.19/m2e-lastUpdated.properties"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
