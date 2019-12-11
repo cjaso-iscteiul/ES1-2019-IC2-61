@@ -77,7 +77,6 @@ public class IG extends JFrame {
 					readExcelFile r = new readExcelFile();
 					r.showExcel();
 					ArrayList<String> lista = r.getLista();
-					System.out.println(lista.size());
 					
 					boolean firstLine = false;
 					
@@ -106,33 +105,35 @@ public class IG extends JFrame {
 							info.addRow(listaAux);
 						}
 						
-						if(listaAux[8].equals("VERDADEIRO") && listaAux[9].equals("VERDADEIRO")) {
+						if(listaAux[8].equals("true") && listaAux[9].equals("true")) {
 							countDCIiPLASMA++;
 						}
-						else if(listaAux[8].equals("VERDADEIRO") && listaAux[10].equals("VERDADEIRO")) {
-							countDCIPMD++;
-						}
-						else if(listaAux[8].equals("FALSO") && listaAux[9].equals("VERDADEIRO")) {
+						else if(listaAux[8].equals("false") && listaAux[9].equals("true")) {
 							countDIIiPLASMA++;
 						}
-						else if(listaAux[8].equals("FALSO") && listaAux[10].equals("VERDADEIRO")) {
-							countDIIPMD++;
-						}
-						else if(listaAux[8].equals("FALSO") && listaAux[9].equals("FALSO")) {
+						else if(listaAux[8].equals("false") && listaAux[9].equals("false")) {
 							countADCIiPLASMA++;
 						}
-						else if(listaAux[8].equals("FALSO") && listaAux[10].equals("FALSO")) {
-							countADCIPMD++;
-						}
-						else if(listaAux[8].equals("VERDADEIRO") && listaAux[9].equals("FALSO")) {
+						else if(listaAux[8].equals("true") && listaAux[9].equals("false")) {
 							countADIIiPLASMA++;
 						}
-						else if(listaAux[8].equals("VERDADEIRO") && listaAux[10].equals("FALSO")) {
+						
+						
+						if(listaAux[8].equals("true") && listaAux[10].equals("true")) {
+							countDCIPMD++;
+						}
+						else if(listaAux[8].equals("false") && listaAux[10].equals("true")) {
+							countDIIPMD++;
+						}
+						else if(listaAux[8].equals("false") && listaAux[10].equals("false")) {
+							countADCIPMD++;
+						}
+						else if(listaAux[8].equals("true") && listaAux[10].equals("false")) {
 							countADIIPMD++;
 						}
+						System.out.println("ADCI PMD " + countADCIPMD);
 					}
 					
-					table_3 = new JTable();
 					table_3.setModel(new DefaultTableModel(
 						new Object[][] {
 							{"DCI", "DII", "ADCI", "ADII"},
@@ -143,9 +144,7 @@ public class IG extends JFrame {
 						}
 					));
 					table_3.setBounds(541, 247, 306, 32);
-					contentPane.add(table_3);
 					
-					table_4 = new JTable();
 					table_4.setModel(new DefaultTableModel(
 						new Object[][] {
 							{"DCI", "DII", "ADCI", "ADII"},
@@ -156,23 +155,21 @@ public class IG extends JFrame {
 						}
 					));
 					table_4.setBounds(541, 314, 306, 32);
-					contentPane.add(table_4);
 					
 				}
 			}
 		});
 		btnProcurar.setBounds(125, 6, 220, 29);
 		contentPane.add(btnProcurar);
-		
-//		JComboBox comboBox = new JComboBox();
-//		comboBox.setEditable(true);
-//		comboBox.setSelectedIndex(0);
-//		comboBox.setBounds(609, 140, 133, 26);
-//		contentPane.add(comboBox);
-		
+
 		JLabel lblLoc = new JLabel("LOC");
 		lblLoc.setBounds(511, 35, 61, 16);
 		contentPane.add(lblLoc);
+		
+		table_3 = new JTable();
+		contentPane.add(table_3);
+		table_4 = new JTable();
+		contentPane.add(table_4);
 		
 		textField = new JTextField();
 		textField.setBounds(579, 30, 70, 26);
@@ -227,32 +224,6 @@ public class IG extends JFrame {
 		btnIniciar.setBounds(628, 182, 115, 29);
 		contentPane.add(btnIniciar);
 		
-//		table_3 = new JTable();
-//		table_3.setModel(new DefaultTableModel(
-//			new Object[][] {
-//				{"DCI", "DII", "ADCI", "ADII"},
-//				{null, null, null, null},
-//			},
-//			new String[] {
-//				"New column", "New column", "New column", "New column"
-//			}
-//		));
-//		table_3.setBounds(541, 247, 306, 32);
-//		contentPane.add(table_3);
-//		
-//		table_4 = new JTable();
-//		table_4.setModel(new DefaultTableModel(
-//			new Object[][] {
-//				{"DCI", "DII", "ADCI", "ADII"},
-//				{null, null, null, null},
-//			},
-//			new String[] {
-//				"New column", "New column", "New column", "New column"
-//			}
-//		));
-//		table_4.setBounds(541, 314, 306, 32);
-//		contentPane.add(table_4);
-		
 		JLabel lblPmd = new JLabel("PMD");
 		lblPmd.setBounds(541, 218, 69, 20);
 		contentPane.add(lblPmd);
@@ -260,21 +231,10 @@ public class IG extends JFrame {
 		JLabel lblIplasma = new JLabel("iPLASMA");
 		lblIplasma.setBounds(541, 289, 69, 20);
 		contentPane.add(lblIplasma);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"AND", "OR"}));
+		comboBox.setBounds(642, 131, 67, 26);
+		contentPane.add(comboBox);
 	}
-	
-//	public int contadorDefeitos(String tool, String longMethod) {
-//		
-//		
-//		readExcelFile r = new readExcelFile();
-//		r.showExcel();
-//		ArrayList<String> lista = r.getLista();
-//		
-//		for(String s : lista) {
-//			
-//			if(tool.equals(longMethod)) {
-////				int
-//			}
-//		}
-//		
-//	}
 }

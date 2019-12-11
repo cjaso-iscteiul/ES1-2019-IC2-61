@@ -64,7 +64,6 @@ public class readExcelFile {
                         	break;
                     }
                 }
-                System.out.println("");
             } 
             file.close();
         } 
