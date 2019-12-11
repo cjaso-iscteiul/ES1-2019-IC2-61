@@ -9,9 +9,23 @@ public class Long_Method {
 		this.loc = loc;
 		this.cyclo = cyclo;
 	}
-	
-	public detetarDefeitos() {
-		
-	}
+//	
+//	public boolean detetarDefeitos(int locTable, int cycloTable, String operadorLogico) {
+//		if(operadorLogico.equals("AND")) {
+//				if(locTable > this.loc && cycloTable > this.cyclo) {
+//					return true;
+//				}
+//				else {
+//					return false;
+//				}
+//		}
+//		else if(operadorLogico.equals("OR")) {
+//				if(locTable > this.loc || cycloTable > this.cyclo) {
+//					return true;
+//				}
+//				else 
+//					return false;
+//		}
+//	}
 
 }
