@@ -24,7 +24,7 @@ public class readExcelFile {
 	public void showExcel() {
 		try
         {
-            FileInputStream file = new FileInputStream(new File("C:\\Users\\ritap\\Desktop\\ISCTE\\3º ano\\Engenharia de Software I\\Long-Method.xlsx"));
+            FileInputStream file = new FileInputStream(new File("C:\\Users\\Joao\\Downloads\\Long-Method.xlsx"));
  
             //Create Workbook instance holding reference to .xlsx file
             XSSFWorkbook workbook = new XSSFWorkbook(file);
