@@ -56,7 +56,7 @@ public class IG extends JFrame {
 	 */
 	public IG() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 522, 364);
+		setBounds(100, 100, 905, 513);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -128,7 +128,7 @@ public class IG extends JFrame {
 		contentPane.add(lblLaa);
 		
 		textField_3 = new JTextField();
-		textField_3.setBounds(439, 80, 80, 19);
+		textField_3.setBounds(439, 78, 80, 27);
 		contentPane.add(textField_3);
 		textField_3.setColumns(10);
 		
@@ -139,5 +139,20 @@ public class IG extends JFrame {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setModel(info);
+		
+		JButton btnIniciar = new JButton("Iniciar");
+		btnIniciar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int loc = Integer.parseInt(textField.getText());
+				int cyclo = Integer.parseInt(textField_1.getText());
+				int atfd = Integer.parseInt(textField_2.getText());
+				double laa = Double.parseDouble(textField_3.getText());
+				
+				
+				
+			}
+		});
+		btnIniciar.setBounds(327, 133, 115, 29);
+		contentPane.add(btnIniciar);
 	}
 }
