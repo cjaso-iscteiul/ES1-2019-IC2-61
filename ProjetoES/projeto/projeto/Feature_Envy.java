@@ -1,16 +1,16 @@
 package projeto;
 
-public class Future_Envy {
+public class Feature_Envy {
 
 	private int aftd;
-	private int laa;
+	private double laa;
 	
-	public Future_Envy(int aftd, int laa) {
+	public Feature_Envy(int aftd, double laa) {
 		this.aftd = aftd;
 		this.laa = laa;
 	}
 	
-	public boolean detetarDefeitos(int aftdTable, int laaTable, String operadorLogico) {
+	public boolean detetarDefeitos(int aftdTable, double laaTable, String operadorLogico) {
 		if(operadorLogico.equals("AND")) {
 				if(aftdTable > this.aftd && laaTable < this.laa) {
 					return true;
@@ -27,9 +27,5 @@ public class Future_Envy {
 					return false;
 		}
 	}
-	
-	
-	
-	
 	
 }

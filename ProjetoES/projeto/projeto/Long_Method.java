@@ -28,10 +28,4 @@ public class Long_Method {
 		}
 	}
 	
-	
-
-	
-	
-	
-	
 }

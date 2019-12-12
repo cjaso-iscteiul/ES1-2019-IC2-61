@@ -37,10 +37,11 @@ public class IG extends JFrame {
 	private JTable table;
 	private readExcelFile excel;
 	XSSFWorkbook wot;
-	private JTable table_1;
-	private JTable table_2;
 	private JTable table_3;
 	private JTable table_4;
+	
+	private ArrayList<String> lista;
+	private JTable table_5;
 
 	/**
 	 * Launch the application.
@@ -63,7 +64,7 @@ public class IG extends JFrame {
 	 */
 	public IG() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 907, 590);
+		setBounds(100, 100, 917, 849);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -74,9 +75,9 @@ public class IG extends JFrame {
 		btnProcurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()== btnProcurar) {
-					readExcelFile r = new readExcelFile();
-					r.showExcel();
-					ArrayList<String> lista = r.getLista();
+					excel = new readExcelFile();
+					excel.showExcel();
+					lista = excel.getLista();
 					
 					boolean firstLine = false;
 					
@@ -91,10 +92,11 @@ public class IG extends JFrame {
 					
 					for(int j=0; j<lista.size()-12; j+=12) {
 						String[] listaAux = new String[12];
-						
-						for(int i=j; i<j+11; i++) {
+
+						for(int i=j; i<j+12; i++) {
 							listaAux[i-j] = lista.get(i);
 						}
+						
 						if(!firstLine) {
 							for(String s : listaAux) {
 								info.addColumn(s);
@@ -131,8 +133,8 @@ public class IG extends JFrame {
 						else if(listaAux[8].equals("true") && listaAux[10].equals("false")) {
 							countADIIPMD++;
 						}
-						System.out.println("ADCI PMD " + countADCIPMD);
 					}
+					System.out.println(lista);
 					
 					table_3.setModel(new DefaultTableModel(
 						new Object[][] {
@@ -211,6 +213,21 @@ public class IG extends JFrame {
 		scrollPane.setViewportView(table);
 		table.setModel(info);
 		
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(574, 454, 273, 116);
+		contentPane.add(scrollPane_1);
+		
+		table_5 = new JTable();
+		scrollPane_1.setViewportView(table_5);
+		DefaultTableModel info2 = new DefaultTableModel();
+		table_5.setModel(info2);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"AND", "OR"}));
+		comboBox.setBounds(642, 131, 67, 26);
+		contentPane.add(comboBox);
+		
 		JButton btnIniciar = new JButton("Iniciar");
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -218,9 +235,41 @@ public class IG extends JFrame {
 				int cyclo = Integer.parseInt(textField_1.getText());
 				int atfd = Integer.parseInt(textField_2.getText());
 				double laa = Double.parseDouble(textField_3.getText());
+				String operadorLogico = comboBox.getSelectedItem().toString();
+				boolean firstLine = false;			
 				
+				for(int j=0; j<lista.size()-12; j+=12) {
+					String [] listaFinal = new String[3];
+					
+					if(!firstLine) {
+						listaFinal[0] = "MethodID";
+						listaFinal[1] = "is_long_method";
+						listaFinal[2] = "is_feature_envy";
+						info2.addRow(listaFinal);
+						firstLine = true;
+					}
+					else {
+						System.out.println("entrei aqui" + j);
+						System.out.println(lista.get(4));
+						int locTable = Integer.parseInt(lista.get(4));
+						int cycloTable = Integer.parseInt(lista.get(5));
+						
+						Long_Method longmethod = new Long_Method(loc, cyclo);
+						boolean is_long_method = longmethod.detetarDefeitos(locTable, cycloTable, operadorLogico);
+						
+						Feature_Envy featureEnvy = new Feature_Envy(atfd, laa);
+						boolean is_feature_envy = featureEnvy.detetarDefeitos(atfd, laa, operadorLogico);
+						
+						listaFinal[0] = lista.get(0);
+						listaFinal[1] = String.valueOf(is_long_method);
+						listaFinal[2] = String.valueOf(is_feature_envy);
+						
+						info2.addRow(listaFinal);
+					}				
+				}
 			}
 		});
+		
 		btnIniciar.setBounds(628, 182, 115, 29);
 		contentPane.add(btnIniciar);
 		
@@ -231,10 +280,6 @@ public class IG extends JFrame {
 		JLabel lblIplasma = new JLabel("iPLASMA");
 		lblIplasma.setBounds(541, 289, 69, 20);
 		contentPane.add(lblIplasma);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"AND", "OR"}));
-		comboBox.setBounds(642, 131, 67, 26);
-		contentPane.add(comboBox);
+
 	}
 }
