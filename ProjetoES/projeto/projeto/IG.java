@@ -253,11 +253,11 @@ public class IG extends JFrame {
 						String s1 = "MethodID";
 						String s2 = "is_long_method";
 						String s3 = "is_feature_envy";
-						System.out.println( listaFinal[0] +  listaFinal[1] + listaFinal[2]);
+
 						info2.addColumn(s1);
 						info2.addColumn(s2);
 						info2.addColumn(s3);
-						System.out.println(info2.getDataVector());
+
 						firstLine = true;
 						listaTabela3.add(s1);
 						listaTabela3.add(s2);
@@ -296,35 +296,26 @@ public class IG extends JFrame {
 				int countADCIPMD=0;
 				int countADIIPMD=0;
 
-				for(int j=12; j<lista.size()-12; j+=12) {
+				for(int i=1; i<table.getRowCount(); i++) {
 
-					for(int i=3; i<listaTabela3.size()-3; i+=3) {
-						if(lista.get(j+9).equals("true") && listaTabela3.get(j+1).equals("true")) {
-							countDCIiPLASMA++;
-						}
-						else if(lista.get(j+9).equals("false") && listaTabela3.get(j+1).equals("true")) {
-							countDIIiPLASMA++;
-						}
-						else if(lista.get(j+9).equals("false") && listaTabela3.get(j+1).equals("false")) {
-							countADCIiPLASMA++;
-						}
-						else if(lista.get(j+9).equals("true") && listaTabela3.get(j+1).equals("false")) {
-							countADIIiPLASMA++;
-						}
+					if(info.getValueAt(i, 9).equals("true") && info2.getValueAt(i, 1).equals("true"))
+						countDCIiPLASMA++;
+					else if(info.getValueAt(i, 9).equals("false") && info2.getValueAt(i, 1).equals("true"))
+						countDIIiPLASMA++;
+					else if(info.getValueAt(i, 9).equals("false") && info2.getValueAt(i, 1).equals("false"))
+						countADCIiPLASMA++;
+					else if(info.getValueAt(i, 9).equals("true") && info2.getValueAt(i, 1).equals("false"))
+						countADIIiPLASMA++;
 
-						if(lista.get(j+10).equals("true") && listaTabela3.get(j+1).equals("true")) {
-							countDCIPMD++;
-						}
-						else if(lista.get(j+10).equals("false") && listaTabela3.get(j+1).equals("true")) {
-							countDIIPMD++;
-						}
-						else if(lista.get(j+10).equals("false") && listaTabela3.get(j+1).equals("false")) {
-							countADCIPMD++;
-						}
-						else if(lista.get(j+10).equals("true") && listaTabela3.get(j+1).equals("false")) {
-							countADIIPMD++;
-						}
-					}
+					if(info.getValueAt(i, 10).equals("true") && info2.getValueAt(i, 1).equals("true"))
+						countDCIPMD++;
+					else if(info.getValueAt(i, 10).equals("false") && info2.getValueAt(i, 1).equals("true"))
+						countDIIPMD++;
+					else if(info.getValueAt(i, 10).equals("false") && info2.getValueAt(i, 1).equals("false"))
+						countADCIPMD++;
+					else if(info.getValueAt(i, 10).equals("true") && info2.getValueAt(i, 1).equals("false"))
+						countADIIPMD++;
+
 				}
 
 				table_1.setModel(new DefaultTableModel(
@@ -349,10 +340,8 @@ public class IG extends JFrame {
 						}
 						));
 				table_2.setBounds(499, 631, 342, 32);
-
-
 			}
-		
+
 		});
 
 		table_5.setModel(info2);

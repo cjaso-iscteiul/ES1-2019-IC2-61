@@ -43,22 +43,18 @@ public class readExcelFile {
                 while (cellIterator.hasNext()) 
                 {
                     Cell cell = cellIterator.next();
-//                    System.out.println(cell.getStringCellValue());
-//                    lista.add(cell.getStringCellValue());
+
                     //Check the cell type and format accordingly
                     switch (cell.getCellType()) 
                     {
                         case NUMERIC:
-//                            System.out.print(cell.getNumericCellValue() + "\t");
                             String sN = String.valueOf(cell.getNumericCellValue());
                             lista.add(sN);
                             break;
                         case STRING:
-//                            System.out.print(cell.getStringCellValue() + "\t");
                             lista.add(cell.getStringCellValue());
                             break;
                         case BOOLEAN:
-//                        	System.out.print(cell.getBooleanCellValue() + "\t");
                         	String sB = String.valueOf(cell.getBooleanCellValue());
                         	lista.add(sB);
                         	break;
