@@ -10,7 +10,7 @@ public class Feature_Envy {
 		this.laa = laa;
 	}
 	
-	public boolean detetarDefeitos(int aftdTable, double laaTable, String operadorLogico) {
+	public boolean detetarDefeitos(double aftdTable, double laaTable, String operadorLogico) {
 		if(operadorLogico.equals("AND")) {
 				if(aftdTable > this.aftd && laaTable < this.laa) {
 					return true;

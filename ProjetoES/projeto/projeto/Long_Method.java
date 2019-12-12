@@ -10,7 +10,7 @@ public class Long_Method {
 		this.cyclo = cyclo;
 	}
 	
-	public boolean detetarDefeitos(int locTable, int cycloTable, String operadorLogico) {
+	public boolean detetarDefeitos(double locTable, double cycloTable, String operadorLogico) {
 		if(operadorLogico.equals("AND")) {
 				if(locTable > this.loc && cycloTable > this.cyclo) {
 					return true;
