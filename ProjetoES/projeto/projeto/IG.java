@@ -40,12 +40,19 @@ public class IG extends JFrame {
 	XSSFWorkbook wot;
 	private JTable table_3;
 	private JTable table_4;
+	DefaultTableModel info = new DefaultTableModel();
+	DefaultTableModel info2 = new DefaultTableModel();
+	JComboBox comboBox = new JComboBox();
+
+
+
 
 	private ArrayList<String> lista;
 	private JTable table_5;
 	private JTable table_1;
 	private JTable table_2;
 	private ArrayList<String> listaTabela3;
+
 
 	/**
 	 * Launch the application.
@@ -79,90 +86,12 @@ public class IG extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		DefaultTableModel info = new DefaultTableModel();
 		JButton btnProcurar = new JButton("Procurar");
 		btnProcurar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()== btnProcurar) {
 
-					boolean firstLine = false;
-
-					int countDCIiPLASMA=0;
-					int countDIIiPLASMA=0;
-					int countADCIiPLASMA=0;
-					int countADIIiPLASMA=0;
-					int countDCIPMD=0;
-					int countDIIPMD=0;
-					int countADCIPMD=0;
-					int countADIIPMD=0;
-
-					for(int j=0; j<lista.size()-12; j+=12) {
-						String[] listaAux = new String[12];
-
-						for(int i=j; i<j+12; i++) {
-							listaAux[i-j] = lista.get(i);
-						}
-
-						if(!firstLine) {
-							for(String s : listaAux) {
-								info.addColumn(s);
-							}
-							firstLine = true;
-						}
-						else {
-							info.addRow(listaAux);
-						}
-
-						if(listaAux[8].equals("true") && listaAux[9].equals("true")) {
-							countDCIiPLASMA++;
-						}
-						else if(listaAux[8].equals("false") && listaAux[9].equals("true")) {
-							countDIIiPLASMA++;
-						}
-						else if(listaAux[8].equals("false") && listaAux[9].equals("false")) {
-							countADCIiPLASMA++;
-						}
-						else if(listaAux[8].equals("true") && listaAux[9].equals("false")) {
-							countADIIiPLASMA++;
-						}
-
-						if(listaAux[8].equals("true") && listaAux[10].equals("true")) {
-							countDCIPMD++;
-						}
-						else if(listaAux[8].equals("false") && listaAux[10].equals("true")) {
-							countDIIPMD++;
-						}
-						else if(listaAux[8].equals("false") && listaAux[10].equals("false")) {
-							countADCIPMD++;
-						}
-						else if(listaAux[8].equals("true") && listaAux[10].equals("false")) {
-							countADIIPMD++;
-						}
-					}
-
-					table_3.setModel(new DefaultTableModel(
-							new Object[][] {
-								{"DCI", "DII", "ADCI", "ADII"},
-								{countDCIiPLASMA, countDIIiPLASMA, countADCIiPLASMA, countADIIiPLASMA},
-							},
-							new String[] {
-									"New column", "New column", "New column", "New column"
-							}
-							));
-
-					table_3.setBounds(541, 247, 306, 32);
-
-					table_4.setModel(new DefaultTableModel(
-							new Object[][] {
-								{"DCI", "DII", "ADCI", "ADII"},
-								{countDCIPMD, countDIIPMD, countADCIPMD, countADIIPMD},
-							},
-							new String[] {
-									"New column", "New column", "New column", "New column"
-							}
-							));
-
-					table_4.setBounds(541, 314, 306, 32);
+				procurar();	
 
 				}
 			}
@@ -224,7 +153,6 @@ public class IG extends JFrame {
 		contentPane.add(scrollPane_1);
 
 
-		JComboBox comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"AND", "OR"}));
 		comboBox.setBounds(642, 131, 67, 26);
 		contentPane.add(comboBox);
@@ -232,114 +160,12 @@ public class IG extends JFrame {
 		table_5 = new JTable();
 		scrollPane_1.setViewportView(table_5);
 
-		DefaultTableModel info2 = new DefaultTableModel();
 		JButton btnIniciar = new JButton("Iniciar");
 		btnIniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				listaTabela3 = new ArrayList<String>();
-
-				int loc = Integer.parseInt(textField.getText());
-				int cyclo = Integer.parseInt(textField_1.getText());
-				int atfd = Integer.parseInt(textField_2.getText());
-				double laa = Double.parseDouble(textField_3.getText());
-				String operadorLogico = comboBox.getSelectedItem().toString();
-				boolean firstLine = false;	
-
-				for(int j=0; j<lista.size()-12; j+=12) {
-					String [] listaFinal = new String[3];
-
-					if(!firstLine) {
-						String s1 = "MethodID";
-						String s2 = "is_long_method";
-						String s3 = "is_feature_envy";
-
-						info2.addColumn(s1);
-						info2.addColumn(s2);
-						info2.addColumn(s3);
-
-						firstLine = true;
-						listaTabela3.add(s1);
-						listaTabela3.add(s2);
-						listaTabela3.add(s3);
-					}
-					else {
-						double locTable = Double.parseDouble(lista.get(j+4));
-						double cycloTable = Double.parseDouble(lista.get(j+5));
-						double atfdTable = Double.parseDouble(lista.get(j+6));
-						double laaTable = Double.parseDouble(lista.get(j+7));
-
-						Long_Method longmethod = new Long_Method(loc, cyclo);
-						boolean is_long_method = longmethod.detetarDefeitos(locTable, cycloTable, operadorLogico);
-
-						Feature_Envy featureEnvy = new Feature_Envy(atfd, laa);
-						boolean is_feature_envy = featureEnvy.detetarDefeitos(atfdTable, laaTable, operadorLogico);
-
-						listaFinal[0] = lista.get(j);
-						listaFinal[1] = String.valueOf(is_long_method);
-						listaFinal[2] = String.valueOf(is_feature_envy);
-
-						listaTabela3.add(listaFinal[0]);
-						listaTabela3.add(listaFinal[1]);
-						listaTabela3.add(listaFinal[2]);
-
-						info2.addRow(listaFinal);
-					}				
-				}
-
-				int countDCIiPLASMA=0;
-				int countDIIiPLASMA=0;
-				int countADCIiPLASMA=0;
-				int countADIIiPLASMA=0;
-				int countDCIPMD=0;
-				int countDIIPMD=0;
-				int countADCIPMD=0;
-				int countADIIPMD=0;
-
-				for(int i=1; i<table.getRowCount(); i++) {
-
-					if(info.getValueAt(i, 9).equals("true") && info2.getValueAt(i, 1).equals("true"))
-						countDCIiPLASMA++;
-					else if(info.getValueAt(i, 9).equals("false") && info2.getValueAt(i, 1).equals("true"))
-						countDIIiPLASMA++;
-					else if(info.getValueAt(i, 9).equals("false") && info2.getValueAt(i, 1).equals("false"))
-						countADCIiPLASMA++;
-					else if(info.getValueAt(i, 9).equals("true") && info2.getValueAt(i, 1).equals("false"))
-						countADIIiPLASMA++;
-
-					if(info.getValueAt(i, 10).equals("true") && info2.getValueAt(i, 1).equals("true"))
-						countDCIPMD++;
-					else if(info.getValueAt(i, 10).equals("false") && info2.getValueAt(i, 1).equals("true"))
-						countDIIPMD++;
-					else if(info.getValueAt(i, 10).equals("false") && info2.getValueAt(i, 1).equals("false"))
-						countADCIPMD++;
-					else if(info.getValueAt(i, 10).equals("true") && info2.getValueAt(i, 1).equals("false"))
-						countADIIPMD++;
-
-				}
-
-				table_1.setModel(new DefaultTableModel(
-						new Object[][] {
-							{"DCI", "DII", "ADCI", "ADII"},
-							{countDCIiPLASMA, countDIIiPLASMA, countADCIiPLASMA, countADIIiPLASMA},
-						},
-						new String[] {
-								"New column", "New column", "New column", "New column"
-						}
-						));
-				table_1.setBounds(61, 631, 335, 32);
-
-
-				table_2.setModel(new DefaultTableModel(
-						new Object[][] {
-							{"DCI", "DII", "ADCI", "ADII"},
-							{countDCIPMD, countDIIPMD, countADCIPMD, countADIIPMD},
-						},
-						new String[] {
-								"New column", "New column", "New column", "New column"
-						}
-						));
-				table_2.setBounds(499, 631, 342, 32);
+			iniciar();
+				
 			}
 
 		});
@@ -371,5 +197,194 @@ public class IG extends JFrame {
 		lblIplasmawithNew.setBounds(503, 603, 233, 20);
 		contentPane.add(lblIplasmawithNew);
 
+	}
+	
+	public void procurar() {
+		boolean firstLine = false;
+
+		int countDCIiPLASMA=0;
+		int countDIIiPLASMA=0;
+		int countADCIiPLASMA=0;
+		int countADIIiPLASMA=0;
+		int countDCIPMD=0;
+		int countDIIPMD=0;
+		int countADCIPMD=0;
+		int countADIIPMD=0;
+
+		for(int j=0; j<lista.size()-12; j+=12) {
+			String[] listaAux = new String[12];
+
+			for(int i=j; i<j+12; i++) {
+				listaAux[i-j] = lista.get(i);
+			}
+
+			if(!firstLine) {
+				for(String s : listaAux) {
+					info.addColumn(s);
+				}
+				firstLine = true;
+			}
+			else {
+				info.addRow(listaAux);
+			}
+
+			if(listaAux[8].equals("true") && listaAux[9].equals("true")) {
+				countDCIiPLASMA++;
+			}
+			else if(listaAux[8].equals("false") && listaAux[9].equals("true")) {
+				countDIIiPLASMA++;
+			}
+			else if(listaAux[8].equals("false") && listaAux[9].equals("false")) {
+				countADCIiPLASMA++;
+			}
+			else if(listaAux[8].equals("true") && listaAux[9].equals("false")) {
+				countADIIiPLASMA++;
+			}
+
+			if(listaAux[8].equals("true") && listaAux[10].equals("true")) {
+				countDCIPMD++;
+			}
+			else if(listaAux[8].equals("false") && listaAux[10].equals("true")) {
+				countDIIPMD++;
+			}
+			else if(listaAux[8].equals("false") && listaAux[10].equals("false")) {
+				countADCIPMD++;
+			}
+			else if(listaAux[8].equals("true") && listaAux[10].equals("false")) {
+				countADIIPMD++;
+			}
+		}
+
+		table_3.setModel(new DefaultTableModel(
+				new Object[][] {
+					{"DCI", "DII", "ADCI", "ADII"},
+					{countDCIiPLASMA, countDIIiPLASMA, countADCIiPLASMA, countADIIiPLASMA},
+				},
+				new String[] {
+						"New column", "New column", "New column", "New column"
+				}
+				));
+
+		table_3.setBounds(541, 247, 306, 32);
+
+		table_4.setModel(new DefaultTableModel(
+				new Object[][] {
+					{"DCI", "DII", "ADCI", "ADII"},
+					{countDCIPMD, countDIIPMD, countADCIPMD, countADIIPMD},
+				},
+				new String[] {
+						"New column", "New column", "New column", "New column"
+				}
+				));
+
+		table_4.setBounds(541, 314, 306, 32);
+		
+	}
+	
+	public void iniciar() {
+		listaTabela3 = new ArrayList<String>();
+
+		int loc = Integer.parseInt(textField.getText());
+		int cyclo = Integer.parseInt(textField_1.getText());
+		int atfd = Integer.parseInt(textField_2.getText());
+		double laa = Double.parseDouble(textField_3.getText());
+		String operadorLogico = comboBox.getSelectedItem().toString();
+		boolean firstLine = false;	
+
+		for(int j=0; j<lista.size()-12; j+=12) {
+			String [] listaFinal = new String[3];
+
+			if(!firstLine) {
+				String s1 = "MethodID";
+				String s2 = "is_long_method";
+				String s3 = "is_feature_envy";
+
+				info2.addColumn(s1);
+				info2.addColumn(s2);
+				info2.addColumn(s3);
+
+				firstLine = true;
+				listaTabela3.add(s1);
+				listaTabela3.add(s2);
+				listaTabela3.add(s3);
+			}
+			else {
+				double locTable = Double.parseDouble(lista.get(j+4));
+				double cycloTable = Double.parseDouble(lista.get(j+5));
+				double atfdTable = Double.parseDouble(lista.get(j+6));
+				double laaTable = Double.parseDouble(lista.get(j+7));
+
+				Long_Method longmethod = new Long_Method(loc, cyclo);
+				boolean is_long_method = longmethod.detetarDefeitos(locTable, cycloTable, operadorLogico);
+
+				Feature_Envy featureEnvy = new Feature_Envy(atfd, laa);
+				boolean is_feature_envy = featureEnvy.detetarDefeitos(atfdTable, laaTable, operadorLogico);
+
+				listaFinal[0] = lista.get(j);
+				listaFinal[1] = String.valueOf(is_long_method);
+				listaFinal[2] = String.valueOf(is_feature_envy);
+
+				listaTabela3.add(listaFinal[0]);
+				listaTabela3.add(listaFinal[1]);
+				listaTabela3.add(listaFinal[2]);
+
+				info2.addRow(listaFinal);
+			}				
+		}
+
+		int countDCIiPLASMA=0;
+		int countDIIiPLASMA=0;
+		int countADCIiPLASMA=0;
+		int countADIIiPLASMA=0;
+		int countDCIPMD=0;
+		int countDIIPMD=0;
+		int countADCIPMD=0;
+		int countADIIPMD=0;
+
+		for(int i=1; i<table.getRowCount(); i++) {
+
+			if(info.getValueAt(i, 9).equals("true") && info2.getValueAt(i, 1).equals("true"))
+				countDCIiPLASMA++;
+			else if(info.getValueAt(i, 9).equals("false") && info2.getValueAt(i, 1).equals("true"))
+				countDIIiPLASMA++;
+			else if(info.getValueAt(i, 9).equals("false") && info2.getValueAt(i, 1).equals("false"))
+				countADCIiPLASMA++;
+			else if(info.getValueAt(i, 9).equals("true") && info2.getValueAt(i, 1).equals("false"))
+				countADIIiPLASMA++;
+
+			if(info.getValueAt(i, 10).equals("true") && info2.getValueAt(i, 1).equals("true"))
+				countDCIPMD++;
+			else if(info.getValueAt(i, 10).equals("false") && info2.getValueAt(i, 1).equals("true"))
+				countDIIPMD++;
+			else if(info.getValueAt(i, 10).equals("false") && info2.getValueAt(i, 1).equals("false"))
+				countADCIPMD++;
+			else if(info.getValueAt(i, 10).equals("true") && info2.getValueAt(i, 1).equals("false"))
+				countADIIPMD++;
+
+		}
+
+		table_1.setModel(new DefaultTableModel(
+				new Object[][] {
+					{"DCI", "DII", "ADCI", "ADII"},
+					{countDCIiPLASMA, countDIIiPLASMA, countADCIiPLASMA, countADIIiPLASMA},
+				},
+				new String[] {
+						"New column", "New column", "New column", "New column"
+				}
+				));
+		table_1.setBounds(61, 631, 335, 32);
+
+
+		table_2.setModel(new DefaultTableModel(
+				new Object[][] {
+					{"DCI", "DII", "ADCI", "ADII"},
+					{countDCIPMD, countDIIPMD, countADCIPMD, countADIIPMD},
+				},
+				new String[] {
+						"New column", "New column", "New column", "New column"
+				}
+				));
+		table_2.setBounds(499, 631, 342, 32);
+		
 	}
 }
