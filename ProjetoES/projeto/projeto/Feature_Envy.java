@@ -10,6 +10,13 @@ public class Feature_Envy {
 		this.laa = laa;
 	}
 	
+	/**
+	 * Deteta se existe defeito is_feature_envy de acordo com os valores dados nos parametros
+	 * @param aftdTable
+	 * @param laaTable
+	 * @param operadorLogico
+	 * @return
+	 */
 	public boolean detetarDefeitos(double aftdTable, double laaTable, String operadorLogico) {
 		if(operadorLogico.equals("AND")) {
 				if(aftdTable > this.aftd && laaTable < this.laa) {

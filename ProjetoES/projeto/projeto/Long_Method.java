@@ -10,6 +10,13 @@ public class Long_Method {
 		this.cyclo = cyclo;
 	}
 	
+	/**
+	 * Deteta se existe defeito is_long_method de acordo com os valores dados nos parametros
+	 * @param locTable
+	 * @param cycloTable
+	 * @param operadorLogico
+	 * @return
+	 */
 	public boolean detetarDefeitos(double locTable, double cycloTable, String operadorLogico) {
 		if(operadorLogico.equals("AND")) {
 				if(locTable > this.loc && cycloTable > this.cyclo) {

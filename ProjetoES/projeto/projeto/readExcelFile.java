@@ -21,6 +21,9 @@ public class readExcelFile {
 	}
 	
 	
+	/**
+	 * Importa o ficheiro Excel 
+	 */
 	public void showExcel() {
 		try
         {

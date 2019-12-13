@@ -197,6 +197,12 @@ public class IG extends JFrame {
 
 	}
 	
+	/**
+	 * Importa o Excel e apresenta a table na GUI
+	 * Preenche os valores das ferramentas iPlasma e PMD
+	 * 
+	 */
+	
 	public void procurar() {
 		boolean firstLine = false;
 
@@ -278,6 +284,10 @@ public class IG extends JFrame {
 		table_4.setBounds(541, 314, 306, 32);
 		
 	}
+	
+	/**
+	 * Cria tabela com is_long_method e is_feature_envy utilizando as novas métricas definidas pelo utilizador
+	 */
 	
 	public void iniciar() {
 		info2.setRowCount(0);
