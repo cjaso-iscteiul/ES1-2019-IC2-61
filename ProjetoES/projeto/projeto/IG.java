@@ -49,7 +49,6 @@ public class IG extends JFrame {
 	private JTable table_5;
 	private JTable table_1;
 	private JTable table_2;
-	private ArrayList<String> listaTabela3;
 
 
 	/**
