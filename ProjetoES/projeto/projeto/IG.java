@@ -45,8 +45,6 @@ public class IG extends JFrame {
 	JComboBox comboBox = new JComboBox();
 
 
-
-
 	private ArrayList<String> lista;
 	private JTable table_5;
 	private JTable table_1;
@@ -282,8 +280,9 @@ public class IG extends JFrame {
 	}
 	
 	public void iniciar() {
-		listaTabela3 = new ArrayList<String>();
-
+		info2.setRowCount(0);
+		info2.setColumnCount(0);
+		
 		int loc = Integer.parseInt(textField.getText());
 		int cyclo = Integer.parseInt(textField_1.getText());
 		int atfd = Integer.parseInt(textField_2.getText());
@@ -304,9 +303,6 @@ public class IG extends JFrame {
 				info2.addColumn(s3);
 
 				firstLine = true;
-				listaTabela3.add(s1);
-				listaTabela3.add(s2);
-				listaTabela3.add(s3);
 			}
 			else {
 				double locTable = Double.parseDouble(lista.get(j+4));
@@ -323,10 +319,6 @@ public class IG extends JFrame {
 				listaFinal[0] = lista.get(j);
 				listaFinal[1] = String.valueOf(is_long_method);
 				listaFinal[2] = String.valueOf(is_feature_envy);
-
-				listaTabela3.add(listaFinal[0]);
-				listaTabela3.add(listaFinal[1]);
-				listaTabela3.add(listaFinal[2]);
 
 				info2.addRow(listaFinal);
 			}				

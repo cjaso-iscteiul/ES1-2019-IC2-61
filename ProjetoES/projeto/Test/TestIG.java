@@ -21,6 +21,5 @@ public class TestIG {
 		ig.iniciar();
 	}
 	
-
 }
 
